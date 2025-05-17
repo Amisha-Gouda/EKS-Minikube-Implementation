@@ -11,10 +11,11 @@
 Before you begin, ensure you have the following tools installed and configured:
 - **kubectl**
 - **Minikube** with the support for `--addons=ingress,metric-server` and `--cni=calico`
-- **MinIO andmc (MinIO Client)** 
+- **MinIO and mc (MinIO Client)** 
 - **Helm** 
 - **Docker**
 - **Kyverno**
+- **Calic**
 
 # 🧱 Task 1: Microservice Stack Deployment
 

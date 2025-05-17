@@ -11,7 +11,7 @@
 Before you begin, ensure you have the following tools installed and configured:
 - **kubectl**
 - **Minikube** with the support for `--addons=ingress,metric-server` and `--cni=calico`
-- **mc (MinIO Client)** 
+- **MinIO andmc (MinIO Client)** 
 - **Helm** 
 - **Docker**
 - **Kyverno**

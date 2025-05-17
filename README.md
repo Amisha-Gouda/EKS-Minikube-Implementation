@@ -38,7 +38,7 @@ All services are containerized and deployed using **Helm**, with:
 ### 1. Clone the Repository
 
 ```bash
-- git clone https://github.com/your-username/microservice-security-sim.git
+- git clone https://github.com/Amisha-Gouda/EKS-Minikube-Implementation.git
 - cd microservice-security-sim/task-1
 ```
 ### 2. Create Namespaces

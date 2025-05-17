@@ -315,7 +315,7 @@ block-auth-header-logging:
     in command or args. rule block-auth-command failed at path /spec/containers/0/command/'
 ```
 
-# 🧱 Task 4: Microservice Stack Deployment
+# 🧱 Task 4: Observability
 
 ## 🗂️ Overview
 Set up monitoring for your Kubernetes cluster using Prometheus and Grafana. Visualize key metrics such as:
@@ -391,7 +391,7 @@ Below are the PromQL queries used to visualize and monitor the auth-service, dat
 - sum by (pod) (kube_pod_container_status_restarts_total{namespace="application", pod=~"data-service.*"})
 - sum by (pod) (kube_pod_container_status_restarts_total{namespace="application", pod=~"auth-service.*"})
 ```
-# 🧱 Task 5: Microservice Stack Deployment
+# 🧱 Task 5: Failure Simulation
 
 ## 🗂️ Overview
 Simulate a pod failure and verify that:

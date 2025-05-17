@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "auth-service.fullname" . }}
+  labels:
+    {{- include "auth-service.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "auth-service.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "auth-service.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: auth-minio-credentials
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi          
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+              initialDelaySeconds: 5
+              periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+              initialDelaySeconds: 5
+              periodSeconds: 10
+        - name: sidecar-container
+          image: minio/mc
+          command: ["sleep", "infinity"]
+          env:
+            - name: MINIO_ACCESS_KEY
+              value: "auth-service"
+            - name: MINIO_SECRET_KEY
+              value: "auth-service-password"
+        - name: sidecar-container1
+          image: curlimages/curl:latest
+          command: ["sleep", "infinity"]

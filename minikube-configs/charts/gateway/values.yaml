@@ -1,0 +1,12 @@
+# Default values for gateway.
+
+replicaCount: 1
+
+image:
+  repository: nginxdemos/hello
+  pullPolicy: IfNotPresent
+  tag: latest
+
+service:
+  type: ClusterIP
+  port: 80

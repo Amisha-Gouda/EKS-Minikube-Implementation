@@ -1,0 +1,10 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: application
+  name: minio-access-role
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  resourceNames: ["minio"]
+  verbs: ["get"]

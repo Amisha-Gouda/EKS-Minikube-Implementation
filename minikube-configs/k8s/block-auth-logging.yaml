@@ -1,0 +1,23 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: block-auth-header-logging
+spec:
+  validationFailureAction: enforce
+  background: false
+  rules:
+  - name: block-auth-command
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Containers must not log Authorization headers in command or args."
+      pattern:
+        spec:
+          containers:
+          - (name): "*"
+            =(command):
+              - "!*Authorization*"
+            =(args):
+              - "!*Authorization*"

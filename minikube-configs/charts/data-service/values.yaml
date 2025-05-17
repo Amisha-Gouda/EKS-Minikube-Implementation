@@ -1,0 +1,19 @@
+# Default values for data-service.
+replicaCount: 1
+
+image:
+  repository: hashicorp/http-echo
+  pullPolicy: IfNotPresent
+  tag: latest
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: data-service-sa
+
+service:
+  type: ClusterIP
+  port: 80
+
+minio:
+  secretName: minio

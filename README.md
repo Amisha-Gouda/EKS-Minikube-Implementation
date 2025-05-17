@@ -15,7 +15,7 @@ Before you begin, ensure you have the following tools installed and configured:
 - **Helm** 
 - **Docker**
 - **Kyverno**
-- **Calic**
+- **Calico**
 
 # 🧱 Task 1: Microservice Stack Deployment
 

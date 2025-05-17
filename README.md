@@ -31,7 +31,6 @@ This setup deploys a basic microservices architecture consisting of three servic
 All services are containerized and deployed using **Helm**, with:
 - Health probes (liveness/readiness),
 - Resource requests/limits,
-- Scoped network access via Ingress/NAT rules,
 - Separated namespaces for system components vs application logic.
 
 ## ⚙️ Setup Instructions
